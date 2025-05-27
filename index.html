@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fade X Miami</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Header -->
+<header class="text-white px-6 py-4 flex justify-between items-center shadow-md"
+        style="background-color: #032879;">
+  <h1 class="text-2xl font-bold">FADE <span class="text-white">X</span></h1>
+
+  <!-- Botón de menú hamburguesa -->
+  <button onclick="toggleMenu()" class="md:hidden text-white text-3xl">
+    ☰
+  </button>
+
+  <!-- Menú de navegación -->
+  <nav id="menu" class="hidden md:flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-center">
+    <a href="#" class="block md:inline-block px-6 py-3 rounded transition hover:bg-white hover:text-[#333]">Home</a>
+    <a href="services.html" class="block md:inline-block px-6 py-3 rounded transition hover:bg-white hover:text-[#333]">Services</a>
+    <a href="gallery.html" class="block md:inline-block px-6 py-3 rounded transition hover:bg-white hover:text-[#333]">Gallery</a>
+    <a href="#contact" class="block md:inline-block px-6 py-3 rounded transition hover:bg-white hover:text-[#333]">Contact</a>
+  </nav>
+</header>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex"); // Aparece ordenado en columnas en móviles
+  }
+</script>
+
+<section class="relative w-full h-[80vh]">
+    <!-- Imagen de fondo -->
+    <img src="./assets/img/pole barber.jpg" alt="Barbería" class="absolute inset-0 w-full h-full object-cover">
+
+    <!-- principal -->
+    <div class="relative z-10 flex flex-col md:flex-row items-center justify-center h-full px-6 md:px-12 text-white text-center">
+        <div class="max-w-xl">
+            <h2 class="p-6 md:p-10 w-full mb-4 md:mb-6 font-bold">
+                <span class="text-2xl md:text-5xl block">Welcome to</span>
+                <span class="text-white text-4xl md:text-7xl whitespace-nowrap">FADE X MIAMI</span>
+                <span class="text-2xl md:text-5xl block">Barbershop</span>
+            </h2>
+            <p class="text-lg md:text-xl mb-4 md:mb-6">
+                Cuts with style, precision, and expertise. Experience the best barbershop in Miami.
+            </p>
+            <a href="#" class="inline-block px-6 md:px-8 py-2 md:py-3 rounded transition"
+               style="border: 4px solid white; 
+                      background-color: #0033A0; 
+                      color: #ffffff; 
+                      text-decoration: none; 
+                      display: inline-block; 
+                      transition: all 0.3s ease-in-out;"
+               onmouseover="this.style.backgroundColor='white'; this.style.color='#0033A0';"
+               onmouseout="this.style.backgroundColor='#0033A0'; this.style.color='#ffffff';">
+                Book Your Appointment
+            </a>
+        </div>
+    </div>
+</section>
+
+  <!-- seccion about -->
+  <section class="flex flex-col md:flex-row items-center gap-12 px-12 py-20 bg-gray-100">
+  <!-- Imágenes a la izquierda (más grandes) -->
+  <div class="flex flex-row gap-6 w-full md:w-1/2">
+  <img src="./assets/img/pexels-ryank-12304513.jpg" alt="Barbería Fade X Miami"
+    class="rounded-lg shadow-lg w-1/2 h-[500px] object-cover">
+  <img src="./assets/img/pexels-rafael-quaty-37077235-13386929.jpg" alt="Equipo de Fade X Miami"
+    class="rounded-lg shadow-lg w-1/2 h-[500px] object-cover">
+</div>
+  <!-- Texto a la derecha (más ancho) -->
+  <div class="w-full md:w-2/3 text-gray-800">
+    <h2 class="text-6xl font-bold mb-8 text-[#0033A0]">About Us</h2>
+    <p class="text-xl font-semibold mb-6"> Welcome to <span class="text-[#0033A0]">Fade X Miami</span>, More Than a Barbershop, a Precision Grooming Experience.</p>
+    <p class="text-lg leading-relaxed">
+      From the beginning, we’ve redefined the art of cutting hair in Miami, delivering exclusive service in an atmosphere where tradition meets modern style. Our mission is to provide premium-quality haircuts, using perfected techniques and expert attention to detail.
+    </p>
+    <p class="mt-6 text-lg font-medium text-[#0033A0] italic">
+      "A haircut is more than just aesthetics—it's confidence, it's attitude, it's who you are."
+    </p>
+</div>
+</section>
+</section>
+
+  <!-- Servicios Populares -->
+<section class="text-center px-6 py-12" style="background-color: #032879;">
+  <h2 class="text-6xl font-bold mb-16 text-white">Popular Services</h2>
+  
+  <div class="flex flex-wrap gap-12 justify-center">
+    <!-- Servicio 1 -->
+    <div class="flex flex-col items-center w-64 border-4 rounded-lg p-6" 
+         style="border-image: linear-gradient(to right, #C0C0C0, #808080, #505050) 1; border-style: solid;">
+      <img src="./assets/img/instrumentos.png" alt="Classic Haircut" class="w-16 h-16 mb-12">
+      <h3 class="text-2xl font-bold text-white mb-4">Classic Haircut</h3>
+      <p class="text-gray-400 text-sm">Precision and style come together in a perfectly executed cut tailored to your facial structure. Our skilled barbers craft clean lines and smooth transitions, giving you a sharp and confident look that lasts.</p>
+    </div>
+
+    <!-- Servicio 2 -->
+    <div class="flex flex-col items-center w-64 border-4 rounded-lg p-6" 
+         style="border-image: linear-gradient(to right, #C0C0C0, #808080, #505050) 1; border-style: solid;">
+      <img src="./assets/img/navaja-de-afeitar.png" alt="Hot Towel Shave" class="w-16 h-16 mb-12">
+      <h3 class="text-2xl font-bold text-white mb-4">Hot Towel Shave</h3>
+      <p class="text-gray-400 text-sm">Experience the ultimate traditional shave with a soothing hot towel treatment. We soften your skin, perform a close razor shave, and finish with a premium aftershave for a refreshed and smooth feel.</p>
+    </div>
+
+    <!-- Servicio 3 -->
+    <div class="flex flex-col items-center w-64 border-4 rounded-lg p-6" 
+         style="border-image: linear-gradient(to right, #C0C0C0, #808080, #505050) 1; border-style: solid;">
+      <img src="./assets/img/secador-de-pelo.png" alt="Hair Color" class="w-16 h-16 mb-12">
+      <h3 class="text-2xl font-bold text-white mb-4">Hair Color</h3>
+      <p class="text-gray-400 text-sm">Reinvent your style with expert color techniques. Whether you want a bold change or a subtle enhancement, we use high-quality dyes and protective treatments to achieve a flawless, long-lasting finish.</p>
+    </div>
+
+    <!-- Servicio 4 -->
+    <div class="flex flex-col items-center w-64 border-4 rounded-lg p-6" 
+         style="border-image: linear-gradient(to right, #C0C0C0, #808080, #505050) 1; border-style: solid;">
+      <img src="./assets/img/navaja-de-afeitar.png" alt="Facial Cleansing" class="w-16 h-16 mb-12">
+      <h3 class="text-2xl font-bold text-white mb-4">Facial Cleansing</h3>
+      <p class="text-gray-400 text-sm">Revitalize your skin with a deep cleansing treatment. Designed to eliminate impurities, exfoliate dead skin cells, and hydrate, this service leaves your face feeling fresh, smooth, and renewed.</p>
+    </div>
+  </div>
+
+ <a href="services.html" class="inline-block mt-16 px-6 py-2 rounded transition"
+   style="border: 4px solid white; 
+          background-color: transparent; 
+          color: white; 
+          text-decoration: none; 
+          display: inline-block;"
+   onmouseover="this.style.backgroundColor='white'; this.style.color='#032879';"
+   onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">
+   Explore All Services
+</a>
+</section>
+
+  <!-- Galería -->
+<section class="text-center px-6 py-12 bg-gray-200">
+    <h2 class="text-6xl font-bold mb-14 text-[#0033A0]">Gallery</h2>
+    <div class="flex overflow-x-auto space-x-4 p-2 justify-center">
+      <img src="./assets/img/pexels-noe-nei-20715773-7608993.jpg" class="rounded shadow w-80 h-80 object-cover" alt="galería 1">
+      <img src="./assets/img/pexels-alexandre-saraiva-carniato-583650-5853394.jpg" class="rounded shadow w-80 h-80 object-cover" alt="galería 2">
+      <img src="./assets/img/pexels-alexandre-saraiva-carniato-583650-6188366.jpg" class="rounded shadow w-80 h-80 object-cover" alt="galería 3">
+      <img src="./assets/img/pexels-zvolskiy-1805600.jpg" class="rounded shadow w-80 h-80 object-cover" alt="galería 4">
+      <img src="./assets/img/pexels-ryank-12304511.jpg" class="rounded shadow w-80 h-80 object-cover" alt="galería 5">
+    </div>
+  <a href="gallery.html" class="inline-block mt-16 px-6 py-2 rounded transition"
+   style="border: 4px solid #032879; 
+          background-color: white; 
+          color: #032879; 
+          text-decoration: none; 
+          display: inline-block; 
+          transition: all 0.3s ease-in-out; 
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);"
+   onmouseover="this.style.backgroundColor='#032879'; this.style.color='white';"
+   onmouseout="this.style.backgroundColor='white'; this.style.color='#032879';">
+   Explore Gallery
+</a>
+</section>
+
+<!-- Contacto -->
+<section id="contact" class="py-16 px-12 w-full flex flex-col items-center text-center" style="background-color: #032879;">
+    <div class="max-w-6xl mx-auto mb-14">
+        <h2 class="text-6xl font-bold text-white">Contact Us</h2>
+        <p class="text-xl text-gray-300">We're here to assist you. Write to us or visit us and experience the best service.</p>
+    </div>
+
+    <!-- Sección dividida en dos columnas correctamente alineadas -->
+<div class="grid md:grid-cols-2 gap-12 w-full max-w-6xl items-center">
+    <!-- Información de contacto ajustada -->
+    <div class="flex flex-col gap-8 text-left text-white">
+        <!-- Phone -->
+        <div class="flex items-center gap-6">
+            <img src="./assets/img/icons8-phone-64.png" alt="Phone Icon" class="w-20 h-20 flex-shrink-0">
+            <p class="text-lg flex-grow text-justify"><strong>Phone:</strong> +1 (305) 555-1234</p>
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-center gap-6">
+            <img src="./assets/img/icons8-email-64.png" alt="Email Icon" class="w-20 h-20 flex-shrink-0">
+            <p class="text-lg flex-grow text-justify"><strong>Email:</strong> contacto@fadex.com</p>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="flex items-center gap-6">
+            <img src="./assets/img/icons8-time-span-64.png" alt="Clock Icon" class="w-20 h-20 flex-shrink-0">
+            <p class="text-lg flex-grow text-justify"><strong>Monday to Saturday:</strong> 10:00 AM - 7:00 PM</p>
+        </div>
+
+        <!-- Location -->
+        <div class="flex items-center gap-6">
+            <img src="./assets/img/icons8-location-64.png" alt="Location Icon" class="w-20 h-20 flex-shrink-0">
+            <p class="text-lg flex-grow text-justify"><strong>Address:</strong> 123 Barber Street, Miami, FL</p>
+        </div>
+    </div>
+
+        <!-- Mapa más ancho -->
+        <div class="flex justify-center w-full">
+            <iframe class="w-full h-96 max-w-lg rounded-lg shadow-lg"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d143436.56891849192!2d-80.29949822871696!3d25.78254529994382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b69b5f7b5b1b%3A0x4bd6e96a6a8457!2sMiami%2C%20FL%2C%20EE.%20UU.!5e0!3m2!1ses!2us!4v1629473577377!5m2!1ses!2us"
+                    allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gray-900 text-white py-8">
+  <!-- Derechos de autor -->
+  <div class="text-center text-sm text-gray-500 mt-6">
+    <h3 class="text-2xl font-bold">FADE X</h3>
+    "Copyright © 2025 FADE X. All rights reserved."
+  </div>
+</footer>
+
+</body>
+</html>
