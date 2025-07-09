@@ -177,11 +177,37 @@
 </button>
 </div>
 
-<script>
-  let selectedBarber = "";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import {
+    initializeFirestore,
+    persistentLocalCache,
+    persistentSingleTabManager,
+    collection,
+    addDoc
+  } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
-  function selectBarber(name) {
-    selectedBarber = name;
+  const firebaseConfig = {
+    apiKey: "AIzaSyDUesIuQO-cH_qdYWNXHP00x90_MBIvan8",
+    authDomain: "fade-x-miami.firebaseapp.com",
+    projectId: "fade-x-miami",
+    storageBucket: "fade-x-miami.appspot.com",
+    messagingSenderId: "634471833516",
+    appId: "1:634471833516:web:c78dfcdeba603d7d012409",
+    measurementId: "G-KR6CGM4L18"
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  const db = initializeFirestore(app, {
+    localCache: persistentLocalCache({ tabManager: persistentSingleTabManager() }),
+    experimentalForceLongPolling: true
+  });
+
+  window.selectedBarber = "";
+
+  window.selectBarber = function (name) {
+    window.selectedBarber = name;
     ["bJames", "bAndrés", "bNoah"].forEach(id => {
       document.getElementById(id).classList.remove("selected");
     });
@@ -190,8 +216,11 @@
       "Andrés Garcia": "bAndrés",
       "Noah Davis": "bNoah"
     };
-    document.getElementById(barberId[name]).classList.add("selected");
-  }
+    const barberElementId = barberId[name];
+    if (barberElementId) {
+      document.getElementById(barberElementId).classList.add("selected");
+    }
+  };
 
   function calculateTotal(services) {
     return services.reduce((total, s) => {
@@ -201,35 +230,71 @@
     }, 0);
   }
 
-  function submitAppointment() {
-    const name = document.getElementById("customer").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
-    const services = Array.from(document.querySelectorAll("#services input:checked")).map(el => el.value);
+  window.submitAppointment = async function () {
+  const name = document.getElementById("customer").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const services = Array.from(document.querySelectorAll("#services input:checked")).map(el => el.value);
+  const barber = window.selectedBarber;
 
-    if (!name || !selectedBarber || services.length === 0 || !date || !time) {
-      alert("⚠️ Please complete all fields before confirming.");
-      return;
+  if (!name || !barber || services.length === 0 || !date || !time) {
+    alert("⚠️ Please complete all fields before confirming.");
+    return;
+  }
+
+  const total = services.reduce((sum, s) => {
+    const parts = s.split(" - $");
+    return sum + (parseFloat(parts[1]) || 0);
+  }, 0).toFixed(2);
+
+  const appointment = {
+    fields: {
+      customer: { stringValue: name },
+      barber: { stringValue: barber },
+      services: {
+        arrayValue: {
+          values: services.map(s => ({ stringValue: s }))
+        }
+      },
+      total: { stringValue: total },
+      date: { stringValue: date },
+      time: { stringValue: time },
+      timestamp: { timestampValue: new Date().toISOString() }
     }
+  };
 
-    const total = calculateTotal(services).toFixed(2);
-    const summary = `
-✅ Appointment booked for ${name}
-💈 Barber: ${selectedBarber}
+  try {
+    const res = await fetch(
+      "https://firestore.googleapis.com/v1/projects/fade-x-miami/databases/(default)/documents/appointments",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(appointment)
+      }
+    );
+
+    if (!res.ok) throw new Error("Firestore REST write failed");
+
+    alert(`✅ Appointment booked for ${name}
+💈 Barber: ${barber}
 ✂️ Services: ${services.join(", ")}
 📅 Date & Time: ${date} — ${time}
-💵 Total Price: $${total}
-    `;
-    alert(summary);
+💵 Total: $${total}`);
 
-    // Reset fields
+    // Limpia formulario
     document.getElementById("customer").value = "";
     document.querySelectorAll("#services input").forEach(el => el.checked = false);
     document.getElementById("date").value = "";
     document.getElementById("time").value = "";
     ["bJames", "bAndrés", "bNoah"].forEach(id => document.getElementById(id).classList.remove("selected"));
-    selectedBarber = "";
+    window.selectedBarber = "";
+  } catch (e) {
+    console.error("❌ Error saving appointment with REST API:", e);
+    alert("❌ Failed to save appointment. Please try again.");
   }
+};
 </script>
 </body>
 </html>
