@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "fade-x-miami-18db3"
-  }
+  },
+  "targets": {
+    "fade-x-miami-18db3": {
+      "hosting": {
+        "default": [
+          "fadex-miami-18db3"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
