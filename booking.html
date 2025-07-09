@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Barbershop Booking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .selected { border: 3px solid #3b82f6; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans p-6">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-xl">
+    <h2 class="text-3xl font-bold text-center mb-6 text-blue-700">Book an Appointment</h2>
+
+    <!-- Customer Name -->
+    <div class="mb-4">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Customer Name</h3>
+      <input id="customer" type="text" placeholder="e.g. John Smith" required
+        class="w-full px-4 py-2 border bg-gray-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+    </div>
+
+    <!-- Barbers -->
+    <div class="mb-6">
+  <h3 class="text-2xl font-bold text-gray-800 mb-4">Choose Your Barber</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="text-center cursor-pointer border rounded-xl p-4 bg-gray-50 hover:shadow-lg hover:border-blue-500 transition duration-300"
+      onclick="selectBarber('James Carter')" id="bJames">
+      <img src="./assets/img/barber 1.jpg" alt="James Carter" class="mx-auto w-28 h-28 object-cover rounded-full mb-3 border-2 border-gray-300" />
+      <p class="font-semibold text-lg text-gray-800">James Carter</p>
+    </div>
+
+    <div class="text-center cursor-pointer border rounded-xl p-4 bg-gray-50 hover:shadow-lg hover:border-blue-500 transition duration-300"
+      onclick="selectBarber('Andrés Garcia')" id="bAndrés">
+      <img src="./assets/img/barber 2.jpg" alt="Andrés Garcia" class="mx-auto w-28 h-28 object-cover rounded-full mb-3 border-2 border-gray-300" />
+      <p class="font-semibold text-lg text-gray-800">Andrés Garcia</p>
+    </div>
+
+    <div class="text-center cursor-pointer border rounded-xl p-4 bg-gray-50 hover:shadow-lg hover:border-blue-500 transition duration-300"
+      onclick="selectBarber('Noah Davis')" id="bNoah">
+      <img src="./assets/img/barber 3.jpg" alt="Noah Davis" class="mx-auto w-28 h-28 object-cover rounded-full mb-3 border-2 border-gray-300" />
+      <p class="font-semibold text-lg text-gray-800">Noah Davis</p>
+    </div>
+  </div>
+</div>
+
+    <!-- Services -->
+    <div class="mb-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Available Services</h3>
+      <ul id="services" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Classic Cut - $45" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Classic Cut</span>
+      <span class="text-blue-600 font-bold block">$45</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Skin Fade - $50" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Skin Fade</span>
+      <span class="text-blue-600 font-bold block">$50</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Beard Trim & Line-Up - $35" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Beard Trim & Line-Up</span>
+      <span class="text-blue-600 font-bold block">$35</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Full Color - $50" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Full Color</span>
+      <span class="text-blue-600 font-bold block">$50</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Highlights - $60" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Highlights</span>
+      <span class="text-blue-600 font-bold block">$60</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Beard Color Enhancement - $35" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Beard Color Enhancement</span>
+      <span class="text-blue-600 font-bold block">$35</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Deep Cleansing Facial - $40" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Deep Cleansing Facial</span>
+      <span class="text-blue-600 font-bold block">$40</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Beard Hydration & Mask - $30" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Beard Hydration & Mask</span>
+      <span class="text-blue-600 font-bold block">$30</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Exfoliating Scrub - $25" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Exfoliating Scrub</span>
+      <span class="text-blue-600 font-bold block">$25</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Luxury Grooming Package - $100" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Luxury Grooming Package</span>
+      <span class="text-blue-600 font-bold block">$100</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Fade & Facial Combo - $75" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Fade & Facial Combo</span>
+      <span class="text-blue-600 font-bold block">$75</span>
+    </div>
+  </label></li>
+
+  <li><label class="flex items-center gap-4 border rounded-lg p-3 bg-gray-50 hover:shadow-md cursor-pointer transition duration-200">
+    <input type="checkbox" value="Full Barber Experience - $120" class="accent-blue-600 scale-125" />
+    <div>
+      <span class="text-gray-900 font-semibold block">Full Barber Experience</span>
+      <span class="text-blue-600 font-bold block">$120</span>
+    </div>
+  </label></li>
+</ul>
+    </div>
+
+    <!-- Date and Time -->
+    <div class="mb-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Date & Time</h3>
+      <div class="relative mb-4" onclick="document.getElementById('date').showPicker()" style="cursor: pointer;">
+        <input id="date" type="date"
+          class="w-full bg-gray-50 px-5 py-3 border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" />
+        <span class="absolute right-4 top-3 text-gray-400">📆</span>
+      </div>
+      <div class="relative">
+        <select id="time"
+          class="w-full px-5 py-3 border border-gray-300 rounded-md shadow-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+          <option value="" disabled selected>Select a time</option>
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>12:00</option>
+          <option>13:00</option>
+          <option>14:00</option>
+          <option>15:00</option>
+          <option>16:00</option>
+          <option>17:00</option>
+          <option>18:00</option>
+          <option>19:00</option>
+        </select>
+        <span class="absolute right-4 top-3 text-gray-400 pointer-events-none">⏰</span>
+      </div>
+    </div>
+
+    <button onclick="submitAppointment()" class="bg-blue-700 text-white px-6 py-3 rounded-md hover:bg-blue-800 w-full text-lg font-medium transition">
+  Confirm Appointment
+</button>
+</div>
+
+<script>
+  let selectedBarber = "";
+
+  function selectBarber(name) {
+    selectedBarber = name;
+    ["bJames", "bAndrés", "bNoah"].forEach(id => {
+      document.getElementById(id).classList.remove("selected");
+    });
+    const barberId = {
+      "James Carter": "bJames",
+      "Andrés Garcia": "bAndrés",
+      "Noah Davis": "bNoah"
+    };
+    document.getElementById(barberId[name]).classList.add("selected");
+  }
+
+  function calculateTotal(services) {
+    return services.reduce((total, s) => {
+      const parts = s.split(" - $");
+      const price = parseFloat(parts[1]) || 0;
+      return total + price;
+    }, 0);
+  }
+
+  function submitAppointment() {
+    const name = document.getElementById("customer").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const services = Array.from(document.querySelectorAll("#services input:checked")).map(el => el.value);
+
+    if (!name || !selectedBarber || services.length === 0 || !date || !time) {
+      alert("⚠️ Please complete all fields before confirming.");
+      return;
+    }
+
+    const total = calculateTotal(services).toFixed(2);
+    const summary = `
+✅ Appointment booked for ${name}
+💈 Barber: ${selectedBarber}
+✂️ Services: ${services.join(", ")}
+📅 Date & Time: ${date} — ${time}
+💵 Total Price: $${total}
+    `;
+    alert(summary);
+
+    // Reset fields
+    document.getElementById("customer").value = "";
+    document.querySelectorAll("#services input").forEach(el => el.checked = false);
+    document.getElementById("date").value = "";
+    document.getElementById("time").value = "";
+    ["bJames", "bAndrés", "bNoah"].forEach(id => document.getElementById(id).classList.remove("selected"));
+    selectedBarber = "";
+  }
+</script>
+</body>
+</html>
