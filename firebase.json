@@ -12,13 +12,7 @@
         "destination": "/index.html"
       }
     ],
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "https://www.fadexmiami.com",
-        "type": 301
-      }
-    ],
+
     "headers": [
       {
         "source": "/**",
