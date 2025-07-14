@@ -1,0 +1,30 @@
+# Fuerza HTTPS para todas las peticiones
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Establece Content-Type correcto para archivos XML (como el sitemap)
+AddType application/xml .xml
+
+# Protección de archivos sensibles
+<FilesMatch "^(\.htaccess|\.git|\.env|composer\.json|composer\.lock)">
+  Require all denied
+</FilesMatch>
+
+# Mejorar caché del navegador para rendimiento
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# Comprimir contenido si está disponible
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
+</IfModule>
+
+# Evita listar archivos en directorios sin index.html
+Options -Indexes
